@@ -1,0 +1,96 @@
+
+<meta>
+<canvas width="600" height="400"></canvas>
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    //codigo do teclado
+    var esquerda = 37
+    var cima = 38
+    var direita = 39
+    var baixo = 40
+    var barra_de_espaco = 32;
+    var ctrl = 17
+   // declarando a aposição do minha bolinha
+   var usuario = [x = 50, y = 50, raio = 5]
+   // declarando a posiçãao das bolinhas inimigas
+   var xx = 50;
+   var yy = 50;
+   var r = 5;
+
+    function bolinha(x,y,raio) {
+        
+    
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+ 
+    function limpaTela() {
+
+pincel.clearRect(0, 0, 600, 400);
+ 
+}
+
+function atualizar_tela() {
+    limpaTela();
+    pincel.fillStyle = ' yellow';
+    pincel.fillRect(0,0,600,400);
+    bolinha(x,y,raio);
+    bolinha(xx,yy,r);
+}
+
+var taxa = 10; 
+function leDoTeclado(evento) {
+    if (evento.keyCode == cima) {
+      y = y - 10;
+
+    }if (evento.keyCode == baixo) {
+        y = y + 10;
+    }if (evento.keyCode == direita) {
+        x = x + 10;
+    }if (evento.keyCode == esquerda) {
+        x = x -10;
+    }
+    if (evento.keyCode == barra_de_espaco) {
+        raio = raio + 5;
+    }
+    if (evento.keyCode == ctrl) {
+        raio = raio - 5;
+    }
+}
+function colisao(evento) {
+    if (x == xx) {
+        alert('opa eu acho deu certo')
+        
+    }
+}
+
+setInterval(atualizar_tela,10)
+
+
+
+
+document.onkeydown = leDoTeclado;
+
+//     if(evento.keyCode == cima) {
+
+// y = y - taxa;
+
+// } else if (evento.keyCode == baixo) {
+
+// y = y + taxa;
+
+// } else if (evento.keyCode == esquerda) {
+
+// x = x - taxa;
+
+// } else if (evento.keyCode == direita) {
+
+// x = x + taxa;
+// }
+// }
+
+</script>
